@@ -201,14 +201,14 @@ Each chunk file uses a 6-character hex ID and a slugged filename. The Markdown b
 The browser viewer gives a searchable view of the memory store.
 
 - The sidebar lists every chunk with its ID, type, summary, and status.
-- The search bar starts searching at three characters.
+- The search bar drives semantic search queries.
 - Search results show the full chunk, not just metadata.
 - The detail pane exposes classification, tags, related chunks, timestamps, relevance metrics, optional context notes, and content.
 
 ## Development and troubleshooting
 
 - Short searches do nothing. Enter at least three characters before expecting results.
-- The browser viewer depends on the web bundle in `web/dist/`. Run `npm run build:web` or `npm run watch:web` before opening `/memory`.
+- If `/memory` loads without the viewer bundle, run `npm run build:web` or `npm run watch:web` first.
 - The server watches external edits under `data/chunks/` and reindexes them automatically.
 - If `npm run start` fails with a missing command, install `pnpm` or enable Corepack.
 
