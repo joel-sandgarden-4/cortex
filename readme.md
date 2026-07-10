@@ -72,7 +72,7 @@ Cortex is a persistent memory system for LLM co-thinking. It gives agents a dura
 
 ### Verify
 
-Open `http://localhost:8010/memory`. The browser viewer appears only after the web bundle has been built.
+Build the web bundle before opening `http://localhost:8010/memory`.
 
 ## How Cortex works
 
@@ -133,7 +133,7 @@ The prompt-driven loop follows retrieve → think → garden → respond.
 | Browser viewer | `GET /memory` | Searchable chunk browser. |
 | Chunk list | `GET /api/memory/chunks` | Returns sidebar metadata. |
 | Chunk detail | `GET /api/memory/chunks/:id` | Returns one full chunk. |
-| Search | `GET /api/memory/search?q=...` | Requires at least 3 characters and returns full chunks after metadata search. |
+| Search | `GET /api/memory/search?q=...` | Returns full chunks after metadata search. |
 | MCP transport | `POST /mcp/memory` | Streamable HTTP endpoint for MCP clients. |
 
 ### MCP tools
@@ -195,7 +195,6 @@ Each chunk file uses a 6-character hex ID and a slugged filename. The Markdown b
 - Updating a chunk rewrites the file in place. If the summary changes, Cortex also renames the file to match the new slug.
 - Marking a chunk relevant increments `relevant_count` and refreshes `last_relevant_date`.
 - Marking a chunk obsolete sets `status` to `archived`, appends the reason to `context_notes`, and logs the change.
-- External edits to files in `data/chunks/` trigger a reload and reindex so the viewer and memory store stay in sync.
 
 ## Browser viewer
 
